@@ -2,6 +2,7 @@ from django import forms
 from .models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
+from app.models import Item
 
 
 class UserSignin(forms.Form):
@@ -38,3 +39,9 @@ class UserSignin(forms.Form):
         email = self.cleaned_data.get('email')
         user = User.objects.get(email=email)
         login(request, user)
+
+
+class AddAuction(forms.ModelForm):
+    class Meta:
+        model = Item 
+        fields = '__all__'

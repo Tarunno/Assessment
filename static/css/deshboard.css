@@ -8,7 +8,6 @@
   min-height: 100vh;
 }
 .deshboard .user-info{
-  padding: 10px;
   border: 1px solid #f4f4f4;
   border-radius: 10px;
   width: 100%;
@@ -16,6 +15,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  margin-bottom: 15px;
 }
 .deshboard .add-auction{
   width: 50px;
@@ -26,4 +26,126 @@
   border-radius: 100px;
   box-shadow: 4px 4px 6px #f4f4f4;
   cursor: pointer;
+}
+.deshboard .highlight{
+  color: #18c4b9;
+  font-weight: 500;
+}
+.deshboard form {
+  padding: 40px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 700px;
+}
+.deshboard form .inner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 15px;
+  margin-top: -10px;
+}
+.deshboard form .inner-container .left, .deshboard form .inner-container .right {
+  width: 100%;
+  margin: 10px 0px;
+}
+.deshboard form .inner-container .left label, .deshboard form .inner-container .right label {
+  position: relative;
+  top: 28px;
+  left: 10px;
+  color: #636363;
+  transition: 0.3s;
+  font-weight: 500;
+  font-size: 15px;
+}
+.deshboard form .inner-container .left input, .deshboard form .inner-container .right input {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+.deshboard form .inner-container .left input:focus, .deshboard form .inner-container .right input:focus {
+  outline: none;
+}
+.deshboard form button {
+  padding: 10px 15px;
+  background-color: #111;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+.deshboard form button:hover {
+  color: #636363;
+}
+.deshboard form button:focus {
+  outline: none;
+}
+.deshboard .error {
+  font-size: 15px;
+  color: red;
+  font-weight: 500;
+  padding: 5px;
+  position: relative;
+  top: -4px;
+}
+.deshboard .modal{
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, .5);
+  align-items: center;
+  justify-content: center;
+}
+.deshboard .close{
+  width: 30px; 
+  height: 30px; 
+  cursor: pointer;
+  margin-left: calc(100% - 20px);
+}
+.deshboard .my-posted-item{
+  border: 1px solid #f4f4f4;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.deshboard .my-posted-item h2{
+  margin-bottom: 10px;
+}
+
+.deshboard .posted-items{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.deshboard .posted-item{
+  display: flex;
+  align-items: center;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  border: 1px solid #f4f4f4;
+  overflow: hidden;
+  padding: 5px;
+  gap: 15px;
+}
+.deshboard .posted-item img{
+  height: 70px;
+  border-radius: 5px;
+}
+.deshboard .ends-in{
+  font-size: 13px;
+  font-weight: 500;
 }

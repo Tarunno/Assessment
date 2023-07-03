@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from .forms import *
+from .models import *
 
 def signin(request):
     form = UserSignin(request.POST or None)
@@ -28,8 +29,19 @@ def logout(request):
 
 @login_required
 def deshboard(request, id):
-    
+    items = Item.objects.filter(owner=int(request.user.id))
     context = {
-        'title': 'Deshboard'
+        'title': 'Deshboard',
+        'items': items
     }
     return render(request, 'user/deshboard.html', context)
+
+@login_required
+def add_auction(request):
+    if request.method == 'POST':
+        form = AddAuction(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save(commit=False)
+            item.owner = User.objects.get(id=int(request.user.id))
+            item.save()
+    return JsonResponse({'message': ['Auction added']})

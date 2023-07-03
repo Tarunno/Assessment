@@ -4,13 +4,57 @@
 <link rel="stylesheet" href="{% static 'css/deshboard.css' %}">
 <div class="deshboard">
 	<div class="user-info">
-		<p>Logged in as @{{user.username}}</p>
+		<p>Logged in as <span class="highlight"> @{{user.username}} </span></p>
 		<div class="add-auction">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10">
 				<path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
 			</svg>	
 		</div>	
 	</div>
-	<script type="text/javascript" src=""></script>
+	<div class="modal">
+		<form method="POST" autocomplete="off" enctype="multipart/form-data">
+			<div class="close">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+				</svg>			
+			</div>
+			<h1>Add auction <span class="error"></span> </h1>
+			<div class="inner-container">
+				<div class="left">
+					<label for="name">Name</label> <br>
+					<input id="name" type="text" name="name" required> <br>
+					<label for="description">Description</label> <br>
+					<input id="description" type="text" name="description" required>
+					<label for="bid">Min bid pice</label> <br>
+					<input id="bid" type="number" name="bid" required>
+					<label for="end-at">End at</label> <br>
+					<input style="padding-left: 60px;" type="datetime-local" name="end_at" id="end-at" required>
+					<label for="photo">Photo</label>
+					<input style="padding-left: 60px;" type="file" id="photo" name="photo" placeholder="Chosose a photo" required>
+				</div>
+			</div>
+			{% csrf_token %}
+			<button type="submit"> Sign in </button>
+		</form>
+	</div>
+	<div class="my-posted-item">
+		<h2>My posted items</h2>
+		<div class="posted-items">
+			{% for item in items %}
+				<div class="posted-item">
+					<img src="../../../{{item.photo}}" alt="item">
+          <div>
+            <h3>{{item.name}}</h3>    
+            </p>
+            <p class="ends-in"> 
+              Ends in: <span style="color:crimson; padding-right: 5px; border-right: 1px solid #b8b8b8;"> {{item.end_at|timeuntil}}</span>
+							Current bid: ${{item.bid}}
+            </p>
+          </div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<script type="text/javascript" src="{% static 'js/deshboard.js' %}"></script>
 </div>
 {% endblock content %}
