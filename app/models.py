@@ -26,3 +26,12 @@ class Item(models.Model):
   def __str__(self):
     return self.name
 
+
+class Bidding(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, null=True, blank=True)
+    bid = models.IntegerField(default=0)
+    bidder = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now, blank=True)
+
+    def __str__(self):
+        return str(self.item) + ' | ' + str(self.bid)
