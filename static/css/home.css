@@ -1,0 +1,9 @@
+.home {
+  width: 100%;
+  max-width: 1540px;
+  margin: auto;
+  margin-top: 60px;
+  padding: 10px 40px;
+  height: fit-content;
+  min-height: 100vh;
+}
