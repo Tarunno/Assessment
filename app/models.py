@@ -3,6 +3,7 @@ from PIL import Image
 from django.utils import timezone
 from user.models import User
 
+
 class Item(models.Model):
   owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
   name = models.CharField(max_length=255)

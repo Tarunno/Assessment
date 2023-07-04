@@ -1,10 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from app.models import *
 from user.models import *
 from django.http import JsonResponse
 from .models import *
 
 
+@login_required
 def myAdmin(request):
     current_datetime = timezone.localtime(timezone.now())
     items = Item.objects.filter(end_at__gte=current_datetime).order_by('-created_at')
@@ -22,6 +24,7 @@ def myAdmin(request):
     return render(request, 'myadmin/admin_deshboard.html', context)
 
 
+@login_required
 def myAdminGallery(request):
     items = Item.objects.all().order_by('-created_at')
     context = {
@@ -31,6 +34,7 @@ def myAdminGallery(request):
     return render(request, 'myadmin/gallery.html', context)
 
 
+@login_required
 def updateThread(request):
     last_thread = Thread.objects.all().order_by('-created_at')[0]
 

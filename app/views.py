@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .models import *
 
+
 def home(request):
     items = Item.objects.all().order_by('-created_at')
     context = {
