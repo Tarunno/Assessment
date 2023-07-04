@@ -1,11 +1,46 @@
 .side-nav{
-  width: 240px;
+  width: 260px;
   height: 100vh;
-  background-color: red;
+  border: 1px solid #f4f4f4;
+  background-image: linear-gradient(-80deg, rgba(241, 241, 241, 0.719), white);
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 60px;
+  padding: 20px 20px 70px 20px;
   left:0px;
 }
 .content{
-  width: calc(100% - 240px);
-  margin-left: 240px;
+  width: calc(100% - 260px);
+  margin-left: 260px;
+}
+.side-nav ul{
+  list-style: none;
+  padding: 15px;
+}
+.side-nav ul li{
+  margin-bottom: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+.side-nav ul li:hover{
+  color: #30b4d4;
+}
+.side-nav .user{
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  padding: 5px;
+  background-color: #2b2a2a;
+  color: white;
+  font-size: 13px;
+  width: 100%;
+  gap: 10px;
+  border-radius: 10px;
 }

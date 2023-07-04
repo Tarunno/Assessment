@@ -1,0 +1,25 @@
+{% extends 'myadmin/admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/admin-deshboard.css' %}">
+<div class="admin-deshboard">
+  <div class="posted-items">
+    {% for item in items %}
+      <div class="posted-item">
+        <div class="item-container">
+          <img src="../../../{{item.photo}}" alt="item">
+          <div>
+            <h3>{{item.name}}</h3>    
+            </p>
+            <p class="ends-in"> 
+              Ends in: <span style="color:crimson; padding-right: 5px; border-right: 1px solid #b8b8b8;"> {{item.end_at|timeuntil}}</span>
+              Current bid: ${{item.bid}} 
+              <span  style="padding-left: 5px; border-left: 1px solid #b8b8b8;">Bidder: {{item.last_bidder}}</span>   
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
