@@ -1,0 +1,47 @@
+{% extends 'myadmin/admin_base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/admin-deshboard.css' %}">
+<div class="admin-deshboard">
+  <div class="stat-cards">
+    <div class="stat-card-inner">
+      <p class="stat-card">{{item_count}}</p>
+      <p class="stat-card">{{total_value}}</p>
+    </div>
+    <div style="width: 600px;">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        },
+        {
+          label: '# of Votes',
+          data: [10, 9, 5, 5, 2, 13],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+	<script type="text/javascript" src="{% static 'js/deshboard.js' %}"></script>
+</div>
+{% endblock content %}

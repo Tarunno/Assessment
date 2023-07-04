@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from .forms import *
 from .models import *
 
@@ -36,6 +37,7 @@ def deshboard(request, id):
     }
     return render(request, 'user/deshboard.html', context)
 
+
 @login_required
 def add_auction(request):
     if request.method == 'POST':
@@ -45,3 +47,12 @@ def add_auction(request):
             item.owner = User.objects.get(id=int(request.user.id))
             item.save()
     return JsonResponse({'message': ['Auction added']})
+
+
+@login_required
+def end_auction(request, id):
+    item = Item.objects.get(id=id)
+    if item.owner == User.objects.get(id=int(request.user.id)):
+        item.end_at = timezone.localtime()
+        item.save()  
+    return JsonResponse({'message': ['Auction ended']})

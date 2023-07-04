@@ -38,8 +38,6 @@ body a {
 
 header {
   width: 100%;
-  max-width: 1540px;
-  margin: auto;
   padding: 0px 40px;
   display: flex;
   justify-content: space-between;

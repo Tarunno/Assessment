@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/admin-base.css' %}">
 	<title>Assessment {% if title is not None %} | {{title}} {% endif %}</title>
 </head>
 
@@ -30,7 +31,12 @@
       {% endif %}
     </nav>
 	</header>
-	{% block content %}
-	{% endblock content %}
+  <div class="side-nav">
+
+  </div>
+  <div class="content">
+    {% block content %}
+	  {% endblock content %}
+  </div>
 </body>
 </html>

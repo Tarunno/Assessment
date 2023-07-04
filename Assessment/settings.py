@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'user',
+    'myadmin',
     'django_cleanup.apps.CleanupConfig',
 ]
 

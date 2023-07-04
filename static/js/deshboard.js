@@ -2,17 +2,11 @@ let input = document.querySelectorAll('.deshboard input')
 let label = document.querySelectorAll('.deshboard label')
 let form = document.querySelector('.deshboard form')
 let errorMessage = document.querySelector('.error')
+let turn_off = document.querySelector('.posted-item button')
 
 let modal = document.querySelector('.modal')
 let add_acution = document.querySelector('.add-auction')
 let close = document.querySelector('.close')
-
-add_acution.addEventListener('click', () => {
-  modal.style.display = 'flex'
-})
-close.addEventListener('click', () => {
-  modal.style.display = 'none'
-})
 
 handleInput(input, label)
 handleSubmit(form, input, errorMessage)
@@ -70,3 +64,26 @@ function handleInputError(field, error ){
 		field.style.background = 'white'
 	}
 }
+
+
+add_acution.addEventListener('click', () => {
+  modal.style.display = 'flex'
+})
+close.addEventListener('click', () => {
+  modal.style.display = 'none'
+})
+
+turn_off.addEventListener('click', () => {
+	const url = "/user/end/" + turn_off.id
+		fetch(url, {
+			method: "get"
+		})
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			if(data.message){
+				form.reset()
+				window.location.reload()
+			}
+		})
+})
